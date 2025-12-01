@@ -21,7 +21,6 @@
             overflow-x: hidden;
         }
 
-        /* Animated background particles */
         .particles {
             position: fixed;
             top: 0;
@@ -56,7 +55,6 @@
             z-index: 1;
         }
 
-        /* Header with Logo */
         header {
             background: linear-gradient(135deg, rgba(15, 32, 39, 0.98) 0%, rgba(32, 58, 67, 0.98) 100%);
             backdrop-filter: blur(10px);
@@ -138,10 +136,36 @@
             text-transform: uppercase;
         }
 
+        .header-actions {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .subscribe-btn {
+            padding: 15px 35px;
+            background: linear-gradient(135deg, #34d399 0%, #3b82f6 100%);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(52, 211, 153, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .subscribe-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(52, 211, 153, 0.6);
+        }
+
         .header-stats {
             display: flex;
-            gap: 35px;
-            color: white;
+            gap: 20px;
         }
 
         .stat-item {
@@ -167,7 +191,166 @@
             letter-spacing: 1px;
         }
 
-        /* Tabs */
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, rgba(15, 32, 39, 0.98) 0%, rgba(32, 58, 67, 0.98) 100%);
+            padding: 40px;
+            border-radius: 25px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(52, 211, 153, 0.3);
+            animation: slideUp 0.4s ease;
+            position: relative;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2em;
+            color: rgba(255, 255, 255, 0.6);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: none;
+            border: none;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .close-btn:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(90deg);
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .modal-header h2 {
+            font-size: 2em;
+            color: white;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #34d399 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .modal-header p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1em;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #34d399;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: white;
+            font-size: 1em;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #34d399;
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 20px rgba(52, 211, 153, 0.2);
+        }
+
+        .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #34d399 0%, #3b82f6 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(52, 211, 153, 0.4);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(52, 211, 153, 0.6);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 30px;
+            color: #34d399;
+        }
+
+        .success-message.active {
+            display: block;
+        }
+
+        .success-message h3 {
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
         .tabs-container {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
@@ -233,7 +416,6 @@
             margin-right: 10px;
         }
 
-        /* Content Area */
         .tab-content {
             display: none;
             padding: 0 40px 40px;
@@ -325,7 +507,6 @@
             font-weight: 600;
         }
 
-        /* News Grid */
         .news-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
@@ -446,7 +627,6 @@
             border: 1px solid rgba(59, 130, 246, 0.3);
         }
 
-        /* Refresh Button */
         .refresh-btn {
             position: fixed;
             bottom: 40px;
@@ -488,6 +668,8 @@
             .header-content { flex-direction: column; gap: 20px; }
             .logo { width: 60px; height: 60px; font-size: 28px; }
             .logo-text h1 { font-size: 2em; }
+            .header-actions { flex-direction: column; width: 100%; }
+            .subscribe-btn { width: 100%; justify-content: center; }
             .header-stats { gap: 15px; }
             .stat-item { padding: 8px 15px; }
             .tabs-container { margin: 20px; flex-direction: column; }
@@ -495,14 +677,13 @@
             .tab-content { padding: 0 20px 20px; }
             .news-grid { grid-template-columns: 1fr; gap: 20px; }
             .section-header { flex-direction: column; gap: 15px; text-align: center; }
+            .modal-content { padding: 30px 20px; }
         }
     </style>
 </head>
 <body>
-    <!-- Animated Background -->
     <div class="particles" id="particles"></div>
 
-    <!-- Header -->
     <header>
         <div class="header-content">
             <div class="logo-container">
@@ -512,21 +693,65 @@
                     <p>Your Gateway to Finance & Technology</p>
                 </div>
             </div>
-            <div class="header-stats">
-                <div class="stat-item">
-                    <div class="stat-value" id="newsCount">0</div>
-                    <div class="stat-label">Articles</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value" id="lastUpdate">--:--</div>
-                    <div class="stat-label">Updated</div>
+            <div class="header-actions">
+                <button class="subscribe-btn" onclick="openModal()">
+                    <span>📧</span> Subscribe to Daily News
+                </button>
+                <div class="header-stats">
+                    <div class="stat-item">
+                        <div class="stat-value" id="newsCount">0</div>
+                        <div class="stat-label">Articles</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="lastUpdate">--:--</div>
+                        <div class="stat-label">Updated</div>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
 
+    <!-- Subscription Modal -->
+    <div id="subscribeModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">×</button>
+            
+            <div id="formSection">
+                <div class="modal-header">
+                    <h2>📬 Subscribe to Daily News</h2>
+                    <p>Get the latest finance & tech news delivered to your inbox every day!</p>
+                </div>
+                
+                <form id="subscribeForm" onsubmit="handleSubscribe(event)">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+1 (555) 123-4567" required>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        Subscribe Now
+                    </button>
+                </form>
+            </div>
+            
+            <div id="successSection" class="success-message">
+                <h3>🎉 Successfully Subscribed!</h3>
+                <p>Thank you for subscribing! You'll receive daily news summaries at your email address.</p>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
-        <!-- Tabs -->
         <div class="tabs-container">
             <button class="tab active" onclick="switchTab('finance')">
                 <span class="tab-icon">💰</span>Finance News
@@ -536,7 +761,6 @@
             </button>
         </div>
 
-        <!-- Finance Tab -->
         <div id="finance" class="tab-content active">
             <div class="section-header">
                 <div class="section-title">
@@ -553,7 +777,6 @@
             </div>
         </div>
 
-        <!-- Tech Tab -->
         <div id="tech" class="tab-content">
             <div class="section-header">
                 <div class="section-title">
@@ -577,7 +800,6 @@
         let currentTab = 'finance';
         let newsData = { finance: [], tech: [] };
 
-        // Create animated particles
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
             for (let i = 0; i < 50; i++) {
@@ -588,6 +810,89 @@
                 particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
                 particlesContainer.appendChild(particle);
             }
+        }
+
+        function openModal() {
+            document.getElementById('subscribeModal').classList.add('active');
+            document.getElementById('formSection').style.display = 'block';
+            document.getElementById('successSection').classList.remove('active');
+        }
+
+        function closeModal() {
+            document.getElementById('subscribeModal').classList.remove('active');
+            document.getElementById('subscribeForm').reset();
+        }
+
+        function handleSubscribe(event) {
+            event.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Subscribing...';
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                timestamp: new Date().toISOString()
+            };
+            
+            // Store subscription data in localStorage
+            let subscribers = JSON.parse(localStorage.getItem('subscribers') || '[]');
+            subscribers.push(formData);
+            localStorage.setItem('subscribers', JSON.stringify(subscribers));
+            
+            // Send subscription confirmation email
+            const emailData = {
+                to: formData.email,
+                subject: '🎉 Welcome to FinTechWorld Daily News!',
+                body: `
+                    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background: linear-gradient(135deg, #0f2027 0%, #203a43 100%); color: white; border-radius: 15px;">
+                        <h1 style="color: #34d399; text-align: center;">Welcome to FinTechWorld!</h1>
+                        <p style="font-size: 16px; line-height: 1.6;">Hi ${formData.name},</p>
+                        <p style="font-size: 16px; line-height: 1.6;">Thank you for subscribing to our daily news digest! 🎉</p>
+                        <p style="font-size: 16px; line-height: 1.6;">You'll receive a curated summary of the latest finance and technology news every day at <strong style="color: #34d399;">8:00 AM</strong>.</p>
+                        
+                        <div style="background: rgba(52, 211, 153, 0.1); padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #34d399;">
+                            <h3 style="color: #34d399; margin-top: 0;">What to Expect:</h3>
+                            <ul style="line-height: 1.8;">
+                                <li>📈 Latest Finance News & Market Updates</li>
+                                <li>💻 Global Technology Innovations</li>
+                                <li>🚀 Startup & Industry Trends</li>
+                                <li>📊 Expert Analysis & Insights</li>
+                            </ul>
+                        </div>
+                        
+                        <p style="font-size: 16px; line-height: 1.6;">Your subscription details:</p>
+                        <ul style="font-size: 14px; line-height: 1.8; color: #34d399;">
+                            <li><strong>Email:</strong> ${formData.email}</li>
+                            <li><strong>Phone:</strong> ${formData.phone}</li>
+                            <li><strong>Subscribed on:</strong> ${new Date().toLocaleDateString()}</li>
+                        </ul>
+                        
+                        <p style="font-size: 16px; line-height: 1.6; margin-top: 30px;">Stay informed, stay ahead!</p>
+                        <p style="font-size: 16px; line-height: 1.6;"><strong>The FinTechWorld Team</strong></p>
+                        
+                        <hr style="border: none; border-top: 1px solid rgba(255, 255, 255, 0.2); margin: 30px 0;">
+                        <p style="font-size: 12px; color: rgba(255, 255, 255, 0.6); text-align: center;">
+                            Visit us at <a href="https://blog09diary.github.io/finance-tech-news/" style="color: #34d399;">FinTechWorld</a>
+                        </p>
+                    </div>
+                `
+            };
+            
+            // Simulate email sending (in production, this would call your backend API)
+            setTimeout(() => {
+                document.getElementById('formSection').style.display = 'none';
+                document.getElementById('successSection').classList.add('active');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Subscribe Now';
+                
+                // Auto-close modal after 3 seconds
+                setTimeout(() => {
+                    closeModal();
+                }, 3000);
+            }, 1500);
         }
 
         function switchTab(tab) {
@@ -606,16 +911,14 @@
 
         async function loadNews(category) {
             const container = document.getElementById(category);
-            const contentArea = container.querySelector('.loading') ? container : container;
             
             try {
                 let apiUrl;
                 if (category === 'finance') {
-                    // Finance news from multiple sources
                     apiUrl = 'https://api.rss2json.com/v1/api.json?rss_url=https://feeds.bloomberg.com/markets/news.rss';
                 } else {
-                    // Latest tech news from The Verge (more current than TechCrunch)
-                    apiUrl = 'https://api.rss2json.com/v1/api.json?rss_url=https://www.theverge.com/rss/index.xml';
+                    // MIT Technology Review for global tech innovations
+                    apiUrl = 'https://api.rss2json.com/v1/api.json?rss_url=https://www.technologyreview.com/feed/';
                 }
 
                 const response = await fetch(apiUrl);
@@ -626,22 +929,28 @@
                     displayNews(newsData[category], container, category);
                     updateStats();
                 } else {
-                    // Fallback to alternative source
-                    if (category === 'tech') {
-                        const fallbackUrl = 'https://api.rss2json.com/v1/api.json?rss_url=https://techcrunch.com/feed/';
-                        const fallbackResponse = await fetch(fallbackUrl);
-                        const fallbackData = await fallbackResponse.json();
-                        
-                        if (fallbackData.status === 'ok' && fallbackData.items) {
-                            newsData[category] = fallbackData.items.slice(0, 15);
-                            displayNews(newsData[category], container, category);
-                            updateStats();
-                        } else {
-                            throw new Error('Failed to fetch news');
+                    // Fallback sources
+                    const fallbackUrls = {
+                        tech: [
+                            'https://api.rss2json.com/v1/api.json?rss_url=https://www.wired.com/feed/rss',
+                            'https://api.rss2json.com/v1/api.json?rss_url=https://techcrunch.com/feed/'
+                        ]
+                    };
+                    
+                    if (category === 'tech' && fallbackUrls.tech) {
+                        for (const fallbackUrl of fallbackUrls.tech) {
+                            const fallbackResponse = await fetch(fallbackUrl);
+                            const fallbackData = await fallbackResponse.json();
+                            
+                            if (fallbackData.status === 'ok' && fallbackData.items && fallbackData.items.length > 0) {
+                                newsData[category] = fallbackData.items.slice(0, 15);
+                                displayNews(newsData[category], container, category);
+                                updateStats();
+                                return;
+                            }
                         }
-                    } else {
-                        throw new Error('Failed to fetch news');
                     }
+                    throw new Error('Failed to fetch news');
                 }
             } catch (error) {
                 console.error('Error loading news:', error);
@@ -652,7 +961,6 @@
                     <div class="error">
                         <h2>⚠️ Unable to load news</h2>
                         <p>Please try refreshing or check back later.</p>
-                        <p style="font-size: 0.9em; margin-top: 10px; opacity: 0.7;">Error: ${error.message}</p>
                     </div>
                 `;
             }
@@ -761,18 +1069,24 @@
             loadNews(currentTab);
         }
 
-        // Initialize
         window.addEventListener('DOMContentLoaded', () => {
             createParticles();
             loadNews('finance');
             
-            // Auto-refresh every 5 minutes
             setInterval(() => {
                 if (document.visibilityState === 'visible') {
                     loadNews(currentTab);
                 }
             }, 300000);
         });
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('subscribeModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
     </script>
 </body>
 </html>
