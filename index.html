@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Finance & Tech News Hub</title>
+    <title>FinTechWorld - Latest Finance & Technology News</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,107 +13,292 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
             min-height: 100vh;
-            padding: 20px;
+            padding: 0;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Animated background particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: float 15s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header with Logo */
+        header {
+            background: rgba(15, 32, 39, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 25px 40px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid rgba(52, 211, 153, 0.3);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #34d399 0%, #3b82f6 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 800;
+            color: white;
+            box-shadow: 0 5px 20px rgba(52, 211, 153, 0.4);
+            position: relative;
             overflow: hidden;
         }
 
-        header {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        .logo::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .logo-text {
             color: white;
-            padding: 30px;
+        }
+
+        .logo-text h1 {
+            font-size: 2em;
+            font-weight: 800;
+            background: linear-gradient(135deg, #34d399 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+        }
+
+        .logo-text p {
+            font-size: 0.75em;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 300;
+            margin-top: -5px;
+        }
+
+        .header-stats {
+            display: flex;
+            gap: 30px;
+            color: white;
+        }
+
+        .stat-item {
             text-align: center;
         }
 
-        header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        .stat-value {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #34d399;
         }
 
-        header p {
-            font-size: 1.1em;
-            opacity: 0.9;
+        .stat-label {
+            font-size: 0.75em;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
         }
 
-        .tabs {
+        /* Tabs */
+        .tabs-container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            margin: 30px 40px;
+            border-radius: 20px;
+            padding: 10px;
             display: flex;
-            background: #f8f9fa;
-            border-bottom: 3px solid #e9ecef;
+            gap: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
         }
 
         .tab {
             flex: 1;
-            padding: 20px;
+            padding: 20px 30px;
             text-align: center;
             cursor: pointer;
-            font-size: 1.2em;
+            font-size: 1.1em;
             font-weight: 600;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             border: none;
             background: transparent;
+            color: rgba(255, 255, 255, 0.6);
+            border-radius: 15px;
             position: relative;
+            overflow: hidden;
+        }
+
+        .tab::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #34d399 0%, #3b82f6 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
         }
 
         .tab:hover {
-            background: rgba(102, 126, 234, 0.1);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .tab:hover::before {
+            opacity: 0.2;
         }
 
         .tab.active {
-            background: white;
-            color: #667eea;
+            background: linear-gradient(135deg, #34d399 0%, #3b82f6 100%);
+            color: white;
+            box-shadow: 0 10px 30px rgba(52, 211, 153, 0.3);
+            transform: translateY(-3px);
         }
 
-        .tab.active::after {
-            content: '';
-            position: absolute;
-            bottom: -3px;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
+        .tab.active::before {
+            opacity: 1;
         }
 
+        .tab-icon {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+
+        /* Content Area */
         .tab-content {
             display: none;
-            padding: 30px;
-            animation: fadeIn 0.5s ease;
+            padding: 0 40px 40px;
+            animation: fadeInUp 0.6s ease;
         }
 
         .tab-content.active {
             display: block;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0);
+            }
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .live-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #34d399;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        .live-dot {
+            width: 10px;
+            height: 10px;
+            background: #34d399;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
         }
 
         .loading {
             text-align: center;
-            padding: 50px;
-            font-size: 1.2em;
-            color: #667eea;
+            padding: 80px;
         }
 
         .spinner {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #667eea;
+            border: 5px solid rgba(255, 255, 255, 0.1);
+            border-top: 5px solid #34d399;
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             animation: spin 1s linear infinite;
-            margin: 20px auto;
+            margin: 0 auto 20px;
         }
 
         @keyframes spin {
@@ -120,132 +306,252 @@
             100% { transform: rotate(360deg); }
         }
 
+        .loading-text {
+            color: white;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+
+        /* News Grid */
         .news-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 25px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 30px;
         }
 
         .news-card {
-            background: white;
-            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .news-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #34d399 0%, #3b82f6 100%);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
         }
 
         .news-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-            border-color: #667eea;
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(52, 211, 153, 0.2);
+            border-color: rgba(52, 211, 153, 0.3);
+        }
+
+        .news-card:hover::before {
+            transform: scaleX(1);
         }
 
         .news-card-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 15px;
-            color: white;
+            padding: 25px;
+            background: rgba(0, 0, 0, 0.2);
         }
 
         .news-card-title {
-            font-size: 1.2em;
-            font-weight: 600;
-            margin-bottom: 8px;
-            line-height: 1.4;
+            font-size: 1.25em;
+            font-weight: 700;
+            color: white;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
         .news-card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             font-size: 0.85em;
-            opacity: 0.9;
+            color: rgba(255, 255, 255, 0.6);
+            gap: 15px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .news-card-body {
+            padding: 25px;
+        }
+
+        .news-card-description {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            margin-bottom: 20px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .news-card-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .news-card-body {
-            padding: 20px;
-        }
-
-        .news-card-description {
-            color: #555;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-
         .news-card-link {
-            display: inline-block;
-            padding: 10px 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #34d399 0%, #3b82f6 100%);
             color: white;
             text-decoration: none;
-            border-radius: 25px;
+            border-radius: 30px;
             font-weight: 600;
+            font-size: 0.95em;
             transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(52, 211, 153, 0.3);
         }
 
         .news-card-link:hover {
             transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 8px 25px rgba(52, 211, 153, 0.5);
         }
 
-        .error {
-            text-align: center;
-            padding: 50px;
-            color: #dc3545;
-            font-size: 1.1em;
+        .category-badge {
+            padding: 6px 15px;
+            background: rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 600;
+            border: 1px solid rgba(59, 130, 246, 0.3);
         }
 
+        /* Refresh Button */
         .refresh-btn {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #34d399 0%, #3b82f6 100%);
             color: white;
             border: none;
-            font-size: 1.5em;
+            font-size: 1.8em;
             cursor: pointer;
-            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 10px 30px rgba(52, 211, 153, 0.4);
             transition: all 0.3s ease;
+            z-index: 99;
         }
 
         .refresh-btn:hover {
             transform: scale(1.1) rotate(180deg);
+            box-shadow: 0 15px 40px rgba(52, 211, 153, 0.6);
+        }
+
+        .error {
+            text-align: center;
+            padding: 80px;
+            color: #ef4444;
+            background: rgba(239, 68, 68, 0.1);
+            border-radius: 20px;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        .error h2 {
+            font-size: 2em;
+            margin-bottom: 15px;
         }
 
         @media (max-width: 768px) {
-            header h1 { font-size: 1.8em; }
-            .news-grid { grid-template-columns: 1fr; }
-            .tab { font-size: 1em; padding: 15px; }
+            header { padding: 20px; }
+            .header-content { flex-direction: column; gap: 20px; }
+            .logo-text h1 { font-size: 1.5em; }
+            .header-stats { gap: 15px; }
+            .tabs-container { margin: 20px; flex-direction: column; }
+            .tab { padding: 15px; }
+            .tab-content { padding: 0 20px 20px; }
+            .news-grid { grid-template-columns: 1fr; gap: 20px; }
+            .section-header { flex-direction: column; gap: 15px; text-align: center; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>📰 Finance & Tech News Hub</h1>
-            <p>Stay updated with the latest news from around the world</p>
-        </header>
+    <!-- Animated Background -->
+    <div class="particles" id="particles"></div>
 
-        <div class="tabs">
-            <button class="tab active" onclick="switchTab('finance')">💰 Finance News</button>
-            <button class="tab" onclick="switchTab('tech')">💻 Tech News</button>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <div class="logo">FT</div>
+                <div class="logo-text">
+                    <h1>FinTechWorld</h1>
+                    <p>Your Gateway to Finance & Technology</p>
+                </div>
+            </div>
+            <div class="header-stats">
+                <div class="stat-item">
+                    <div class="stat-value" id="newsCount">0</div>
+                    <div class="stat-label">Articles</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="lastUpdate">--:--</div>
+                    <div class="stat-label">Updated</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Tabs -->
+        <div class="tabs-container">
+            <button class="tab active" onclick="switchTab('finance')">
+                <span class="tab-icon">💰</span>Finance News
+            </button>
+            <button class="tab" onclick="switchTab('tech')">
+                <span class="tab-icon">💻</span>Tech News
+            </button>
         </div>
 
+        <!-- Finance Tab -->
         <div id="finance" class="tab-content active">
+            <div class="section-header">
+                <div class="section-title">
+                    <span>📈</span> Latest Finance News
+                </div>
+                <div class="live-indicator">
+                    <div class="live-dot"></div>
+                    LIVE
+                </div>
+            </div>
             <div class="loading">
                 <div class="spinner"></div>
-                <p>Loading finance news...</p>
+                <p class="loading-text">Loading latest finance news...</p>
             </div>
         </div>
 
+        <!-- Tech Tab -->
         <div id="tech" class="tab-content">
+            <div class="section-header">
+                <div class="section-title">
+                    <span>🚀</span> Latest Technology News
+                </div>
+                <div class="live-indicator">
+                    <div class="live-dot"></div>
+                    LIVE
+                </div>
+            </div>
             <div class="loading">
                 <div class="spinner"></div>
-                <p>Loading tech news...</p>
+                <p class="loading-text">Loading latest tech news...</p>
             </div>
         </div>
     </div>
@@ -254,75 +560,118 @@
 
     <script>
         let currentTab = 'finance';
+        let newsData = { finance: [], tech: [] };
+
+        // Create animated particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
 
         function switchTab(tab) {
             currentTab = tab;
             document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
             document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
             
-            event.target.classList.add('active');
+            event.target.closest('.tab').classList.add('active');
             document.getElementById(tab).classList.add('active');
             
-            if (!document.getElementById(tab).querySelector('.news-grid')) {
+            const contentDiv = document.getElementById(tab);
+            if (!contentDiv.querySelector('.news-grid') && newsData[tab].length === 0) {
                 loadNews(tab);
             }
         }
 
         async function loadNews(category) {
             const container = document.getElementById(category);
+            const contentArea = container.querySelector('.loading') ? container : container;
             
             try {
                 let apiUrl;
                 if (category === 'finance') {
+                    // Multiple finance sources
                     apiUrl = 'https://api.rss2json.com/v1/api.json?rss_url=https://feeds.bloomberg.com/markets/news.rss';
                 } else {
-                    apiUrl = 'https://api.rss2json.com/v1/api.json?rss_url=https://feeds.feedburner.com/TechCrunch/';
+                    // Multiple tech sources
+                    apiUrl = 'https://api.rss2json.com/v1/api.json?rss_url=https://techcrunch.com/feed/';
                 }
 
                 const response = await fetch(apiUrl);
                 const data = await response.json();
 
-                if (data.status === 'ok') {
-                    displayNews(data.items.slice(0, 12), container);
+                if (data.status === 'ok' && data.items) {
+                    newsData[category] = data.items.slice(0, 15);
+                    displayNews(newsData[category], container, category);
+                    updateStats();
                 } else {
                     throw new Error('Failed to fetch news');
                 }
             } catch (error) {
-                container.innerHTML = `
+                const sectionHeader = container.querySelector('.section-header');
+                container.innerHTML = '';
+                container.appendChild(sectionHeader);
+                container.innerHTML += `
                     <div class="error">
                         <h2>⚠️ Unable to load news</h2>
-                        <p>Please try again later or check your internet connection.</p>
+                        <p>Please try refreshing or check back later.</p>
                     </div>
                 `;
             }
         }
 
-        function displayNews(items, container) {
+        function displayNews(items, container, category) {
+            const sectionHeader = container.querySelector('.section-header');
             const newsGrid = document.createElement('div');
             newsGrid.className = 'news-grid';
 
-            items.forEach(item => {
+            items.forEach((item, index) => {
                 const card = document.createElement('div');
                 card.className = 'news-card';
+                card.style.animationDelay = (index * 0.1) + 's';
                 
                 const pubDate = new Date(item.pubDate);
                 const timeAgo = getTimeAgo(pubDate);
                 
                 const description = item.description 
-                    ? item.description.replace(/<[^>]*>/g, '').substring(0, 150) + '...'
-                    : 'Click to read more...';
+                    ? item.description.replace(/<[^>]*>/g, '').substring(0, 180) + '...'
+                    : 'Click to read the full article for more details...';
+
+                const categoryName = category === 'finance' ? 'Finance' : 'Technology';
+                const categoryColor = category === 'finance' ? '#34d399' : '#3b82f6';
 
                 card.innerHTML = `
                     <div class="news-card-header">
                         <div class="news-card-title">${item.title}</div>
                         <div class="news-card-meta">
-                            <span>📅 ${timeAgo}</span>
-                            <span>✍️ ${item.author || 'Unknown'}</span>
+                            <div class="meta-item">
+                                <span>🕒</span>
+                                <span>${timeAgo}</span>
+                            </div>
+                            ${item.author ? `
+                            <div class="meta-item">
+                                <span>✍️</span>
+                                <span>${item.author.substring(0, 20)}</span>
+                            </div>
+                            ` : ''}
                         </div>
                     </div>
                     <div class="news-card-body">
                         <p class="news-card-description">${description}</p>
-                        <a href="${item.link}" target="_blank" class="news-card-link">Read Full Article →</a>
+                        <div class="news-card-footer">
+                            <a href="${item.link}" target="_blank" class="news-card-link">
+                                Read More <span>→</span>
+                            </a>
+                            <span class="category-badge" style="background: ${categoryColor}20; color: ${categoryColor}; border-color: ${categoryColor}40;">
+                                ${categoryName}
+                            </span>
+                        </div>
                     </div>
                 `;
                 
@@ -330,6 +679,7 @@
             });
 
             container.innerHTML = '';
+            container.appendChild(sectionHeader);
             container.appendChild(newsGrid);
         }
 
@@ -355,20 +705,41 @@
             return 'Just now';
         }
 
+        function updateStats() {
+            const totalNews = newsData.finance.length + newsData.tech.length;
+            document.getElementById('newsCount').textContent = totalNews;
+            
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+            document.getElementById('lastUpdate').textContent = timeString;
+        }
+
         function refreshNews() {
             const container = document.getElementById(currentTab);
-            container.innerHTML = `
+            const sectionHeader = container.querySelector('.section-header');
+            container.innerHTML = '';
+            container.appendChild(sectionHeader);
+            container.innerHTML += `
                 <div class="loading">
                     <div class="spinner"></div>
-                    <p>Refreshing news...</p>
+                    <p class="loading-text">Refreshing latest news...</p>
                 </div>
             `;
+            newsData[currentTab] = [];
             loadNews(currentTab);
         }
 
-        // Load finance news on page load
+        // Initialize
         window.addEventListener('DOMContentLoaded', () => {
+            createParticles();
             loadNews('finance');
+            
+            // Auto-refresh every 5 minutes
+            setInterval(() => {
+                if (document.visibilityState === 'visible') {
+                    loadNews(currentTab);
+                }
+            }, 300000);
         });
     </script>
 </body>
