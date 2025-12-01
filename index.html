@@ -191,7 +191,6 @@
             letter-spacing: 1px;
         }
 
-        /* Modal Styles */
         .modal {
             display: none;
             position: fixed;
@@ -627,7 +626,6 @@
             border: 1px solid rgba(59, 130, 246, 0.3);
         }
 
-        /* About Us Styles */
         .about-container {
             max-width: 1000px;
             margin: 0 auto;
@@ -654,9 +652,9 @@
 
         .about-hero p {
             font-size: 1.3em;
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.9);
             line-height: 1.8;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
@@ -680,8 +678,8 @@
 
         .about-section p {
             font-size: 1.1em;
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.9;
             margin-bottom: 15px;
         }
 
@@ -692,9 +690,9 @@
 
         .about-section ul li {
             font-size: 1.1em;
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 2;
-            padding-left: 30px;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 2.2;
+            padding-left: 35px;
             position: relative;
         }
 
@@ -704,12 +702,12 @@
             left: 0;
             color: #34d399;
             font-weight: bold;
-            font-size: 1.2em;
+            font-size: 1.3em;
         }
 
         .values-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 25px;
             margin-top: 30px;
         }
@@ -726,6 +724,7 @@
         .value-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(52, 211, 153, 0.2);
+            background: rgba(52, 211, 153, 0.15);
         }
 
         .value-card .icon {
@@ -741,7 +740,7 @@
 
         .value-card p {
             font-size: 0.95em;
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255, 255, 255, 0.75);
             line-height: 1.6;
         }
 
@@ -772,6 +771,26 @@
             color: white;
             transform: translateY(-5px);
             box-shadow: 0 5px 20px rgba(52, 211, 153, 0.4);
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, rgba(52, 211, 153, 0.15) 0%, rgba(59, 130, 246, 0.15) 100%);
+            padding: 50px;
+            border-radius: 20px;
+            text-align: center;
+            border: 2px solid rgba(52, 211, 153, 0.3);
+        }
+
+        .cta-section h3 {
+            font-size: 2.2em;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.2em;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 30px;
         }
 
         .refresh-btn {
@@ -829,6 +848,7 @@
             .about-hero p { font-size: 1.1em; }
             .about-section { padding: 25px; }
             .values-grid { grid-template-columns: 1fr; }
+            .cta-section { padding: 30px 20px; }
         }
     </style>
 </head>
@@ -862,7 +882,6 @@
         </div>
     </header>
 
-    <!-- Subscription Modal -->
     <div id="subscribeModal" class="modal">
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal()">×</button>
@@ -950,58 +969,70 @@
         <div id="about" class="tab-content">
             <div class="about-container">
                 <div class="about-hero">
-                    <h2>About FinTechWorld</h2>
-                    <p>Empowering individuals and businesses with cutting-edge insights at the intersection of finance and technology.</p>
+                    <h2>Welcome to Jobs & Courses</h2>
+                    <p>Your go-to hub for career growth, learning, and networking in the dynamic world of financial technology.</p>
                 </div>
 
                 <div class="about-section">
-                    <h3>🌟 Our Mission</h3>
-                    <p>At FinTechWorld, we are dedicated to bridging the gap between finance and technology. Our mission is to deliver timely, accurate, and comprehensive news coverage that keeps you informed about the latest developments shaping the global financial and technological landscape.</p>
-                    <p>We believe that informed decisions drive success. Whether you're an investor, entrepreneur, tech enthusiast, or industry professional, FinTechWorld is your trusted source for insights that matter.</p>
+                    <h3>🎯 Who We Are</h3>
+                    <p>Whether you're a startup founder, freelancer, or a professional seeking new opportunities, we offer a curated selection of job listings, cutting-edge courses, and valuable resources to help you thrive in the fintech industry.</p>
+                    <p>Join our growing community to connect with industry experts, explore innovative startups, and stay ahead with the latest trends and technologies in digital finance.</p>
                 </div>
 
                 <div class="about-section">
-                    <h3>💡 What We Offer</h3>
+                    <h3>💼 What We Offer</h3>
                     <ul>
-                        <li>Real-time financial market news and analysis</li>
-                        <li>Global technology innovations and breakthroughs</li>
-                        <li>Expert insights on fintech trends and disruptions</li>
-                        <li>Daily curated news summaries delivered to your inbox</li>
-                        <li>In-depth coverage of blockchain, AI, and emerging technologies</li>
-                        <li>Market intelligence for informed decision-making</li>
+                        <li>Curated job listings in fintech and technology sectors</li>
+                        <li>Cutting-edge courses for professional development</li>
+                        <li>Valuable resources to help you thrive in the industry</li>
+                        <li>Networking opportunities with industry experts</li>
+                        <li>Access to innovative startups and career opportunities</li>
+                        <li>Latest trends and technologies in digital finance</li>
                     </ul>
                 </div>
 
                 <div class="about-section">
-                    <h3>🎯 Our Values</h3>
+                    <h3>🚀 Professional Services</h3>
+                    <p>In addition to job and course listings, we also provide a range of professional services, including:</p>
+                    <ul>
+                        <li>Software testing and quality assurance</li>
+                        <li>Custom development solutions</li>
+                        <li>Product promotion and marketing</li>
+                        <li>Freelancing support and project management</li>
+                    </ul>
+                    <p>Whether you're looking to build, test, or promote your product—or seeking skilled freelancers for your projects—we're here to help.</p>
+                </div>
+
+                <div class="about-section">
+                    <h3>🌟 Our Core Values</h3>
                     <div class="values-grid">
                         <div class="value-card">
-                            <div class="icon">🔍</div>
-                            <h4>Accuracy</h4>
-                            <p>We prioritize factual, verified information from trusted sources worldwide.</p>
-                        </div>
-                        <div class="value-card">
-                            <div class="icon">⚡</div>
-                            <h4>Timeliness</h4>
-                            <p>Breaking news and real-time updates to keep you ahead of the curve.</p>
-                        </div>
-                        <div class="value-card">
-                            <div class="icon">🌍</div>
-                            <h4>Global Perspective</h4>
-                            <p>Comprehensive coverage of worldwide finance and technology developments.</p>
+                            <div class="icon">🎓</div>
+                            <h4>Learning</h4>
+                            <p>Continuous education and skill development for career advancement.</p>
                         </div>
                         <div class="value-card">
                             <div class="icon">🤝</div>
-                            <h4>Accessibility</h4>
-                            <p>Making complex financial and tech news easy to understand for everyone.</p>
+                            <h4>Networking</h4>
+                            <p>Building meaningful connections with industry professionals.</p>
+                        </div>
+                        <div class="value-card">
+                            <div class="icon">💡</div>
+                            <h4>Innovation</h4>
+                            <p>Staying ahead with cutting-edge fintech trends and technologies.</p>
+                        </div>
+                        <div class="value-card">
+                            <div class="icon">🎯</div>
+                            <h4>Opportunity</h4>
+                            <p>Creating pathways for career growth and professional success.</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="about-section">
-                    <h3>🚀 Why Choose FinTechWorld?</h3>
-                    <p>In today's fast-paced digital economy, staying informed is not just an advantage—it's a necessity. FinTechWorld combines the best of both worlds: comprehensive financial market coverage and cutting-edge technology news, all in one platform.</p>
-                    <p>Our team curates content from leading global sources including Bloomberg, MIT Technology Review, Wired, and TechCrunch, ensuring you receive only the most relevant and impactful news.</p>
+                <div class="about-section cta-section">
+                    <h3>Let's Innovate, Learn, and Grow Together!</h3>
+                    <p>Stay tuned for exclusive insights, career tips, and high-impact opportunities designed to elevate your career and business to the next level.</p>
+                    <p style="margin-top: 20px; font-size: 1em; color: rgba(255, 255, 255, 0.7);">Connect with us for collaborations, promotions, or if you're seeking expert services in testing, development, or freelance project execution.</p>
                 </div>
 
                 <div class="about-section">
