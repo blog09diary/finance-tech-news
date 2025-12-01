@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance & Tech News Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 3px solid #e9ecef;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 1.2em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            background: transparent;
+            position: relative;
+        }
+
+        .tab:hover {
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .tab.active {
+            background: white;
+            color: #667eea;
+        }
+
+        .tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .tab-content {
+            display: none;
+            padding: 30px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .loading {
+            text-align: center;
+            padding: 50px;
+            font-size: 1.2em;
+            color: #667eea;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            border-color: #667eea;
+        }
+
+        .news-card-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 15px;
+            color: white;
+        }
+
+        .news-card-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .news-card-meta {
+            font-size: 0.85em;
+            opacity: 0.9;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .news-card-body {
+            padding: 20px;
+        }
+
+        .news-card-description {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .news-card-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .news-card-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .error {
+            text-align: center;
+            padding: 50px;
+            color: #dc3545;
+            font-size: 1.1em;
+        }
+
+        .refresh-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            font-size: 1.5em;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .refresh-btn:hover {
+            transform: scale(1.1) rotate(180deg);
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.8em; }
+            .news-grid { grid-template-columns: 1fr; }
+            .tab { font-size: 1em; padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📰 Finance & Tech News Hub</h1>
+            <p>Stay updated with the latest news from around the world</p>
+        </header>
+
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab('finance')">💰 Finance News</button>
+            <button class="tab" onclick="switchTab('tech')">💻 Tech News</button>
+        </div>
+
+        <div id="finance" class="tab-content active">
+            <div class="loading">
+                <div class="spinner"></div>
+                <p>Loading finance news...</p>
+            </div>
+        </div>
+
+        <div id="tech" class="tab-content">
+            <div class="loading">
+                <div class="spinner"></div>
+                <p>Loading tech news...</p>
+            </div>
+        </div>
+    </div>
+
+    <button class="refresh-btn" onclick="refreshNews()" title="Refresh News">🔄</button>
+
+    <script>
+        let currentTab = 'finance';
+
+        function switchTab(tab) {
+            currentTab = tab;
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            
+            event.target.classList.add('active');
+            document.getElementById(tab).classList.add('active');
+            
+            if (!document.getElementById(tab).querySelector('.news-grid')) {
+                loadNews(tab);
+            }
+        }
+
+        async function loadNews(category) {
+            const container = document.getElementById(category);
+            
+            try {
+                let apiUrl;
+                if (category === 'finance') {
+                    apiUrl = 'https://api.rss2json.com/v1/api.json?rss_url=https://feeds.bloomberg.com/markets/news.rss';
+                } else {
+                    apiUrl = 'https://api.rss2json.com/v1/api.json?rss_url=https://feeds.feedburner.com/TechCrunch/';
+                }
+
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+
+                if (data.status === 'ok') {
+                    displayNews(data.items.slice(0, 12), container);
+                } else {
+                    throw new Error('Failed to fetch news');
+                }
+            } catch (error) {
+                container.innerHTML = `
+                    <div class="error">
+                        <h2>⚠️ Unable to load news</h2>
+                        <p>Please try again later or check your internet connection.</p>
+                    </div>
+                `;
+            }
+        }
+
+        function displayNews(items, container) {
+            const newsGrid = document.createElement('div');
+            newsGrid.className = 'news-grid';
+
+            items.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'news-card';
+                
+                const pubDate = new Date(item.pubDate);
+                const timeAgo = getTimeAgo(pubDate);
+                
+                const description = item.description 
+                    ? item.description.replace(/<[^>]*>/g, '').substring(0, 150) + '...'
+                    : 'Click to read more...';
+
+                card.innerHTML = `
+                    <div class="news-card-header">
+                        <div class="news-card-title">${item.title}</div>
+                        <div class="news-card-meta">
+                            <span>📅 ${timeAgo}</span>
+                            <span>✍️ ${item.author || 'Unknown'}</span>
+                        </div>
+                    </div>
+                    <div class="news-card-body">
+                        <p class="news-card-description">${description}</p>
+                        <a href="${item.link}" target="_blank" class="news-card-link">Read Full Article →</a>
+                    </div>
+                `;
+                
+                newsGrid.appendChild(card);
+            });
+
+            container.innerHTML = '';
+            container.appendChild(newsGrid);
+        }
+
+        function getTimeAgo(date) {
+            const seconds = Math.floor((new Date() - date) / 1000);
+            
+            const intervals = {
+                year: 31536000,
+                month: 2592000,
+                week: 604800,
+                day: 86400,
+                hour: 3600,
+                minute: 60
+            };
+
+            for (const [unit, secondsInUnit] of Object.entries(intervals)) {
+                const interval = Math.floor(seconds / secondsInUnit);
+                if (interval >= 1) {
+                    return `${interval} ${unit}${interval > 1 ? 's' : ''} ago`;
+                }
+            }
+            
+            return 'Just now';
+        }
+
+        function refreshNews() {
+            const container = document.getElementById(currentTab);
+            container.innerHTML = `
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>Refreshing news...</p>
+                </div>
+            `;
+            loadNews(currentTab);
+        }
+
+        // Load finance news on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            loadNews('finance');
+        });
+    </script>
+</body>
+</html>
